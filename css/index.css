@@ -1,0 +1,19 @@
+:root {
+    --mainColor: #507C5C;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 125%;
+    height: 100%;
+    background-image: url("../img/Mobile\ Spel.svg");
+    background-position: top left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    z-index: -1;
+
+}
