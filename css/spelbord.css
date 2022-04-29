@@ -3,11 +3,10 @@
     --colorWhite: #FFFFFF;
     --colorRed: #FF0000;
 }
-.red{
-    background-color: var(--colorRed);
-}
-.white{
-    background-color: var(--colorWhite);
+
+body{
+    display: flex;
+    align-items: center;
 }
 .game-board{
     display: grid;
@@ -15,6 +14,7 @@
     grid-auto-rows:var(--widthLength);
     grid-auto-flow:row dense;
     counter-reset:num;
+    align-self: center;
 }
 .game-board > div:nth-child(20n + 11) { grid-column:10; }
 .game-board > div:nth-child(20n + 12) { grid-column:9; }
@@ -32,6 +32,12 @@
 }
 .game-board > div {
     border:1px solid;
+}
+.box:nth-of-type(2n) {
+    background-color: var(--colorWhite);
+}
+.box:nth-of-type(2n+1) {
+    background-color: var(--colorRed);
 }
 .game-board > div:before{
     content:counter(num);
