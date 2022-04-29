@@ -3,6 +3,12 @@
     --colorWhite: #FFFFFF;
     --colorRed: #FF0000;
 }
+.red{
+    background-color: var(--colorRed);
+}
+.white{
+    background-color: var(--colorWhite);
+}
 .game-board{
     display: grid;
     grid-template-columns:repeat(10,var(--widthLength));
@@ -22,7 +28,6 @@
 .game-board > div:nth-child(20n + 20) { grid-column:1; }
 
 .box {
-    background-color: #d9d9d9;
     border: 2px solid black;
 }
 .game-board > div {
