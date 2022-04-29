@@ -3,11 +3,30 @@
 }
 .game-board{
     display: grid;
-    grid-template-columns: repeat(10,var(--widthLength));
-    grid-template-rows: repeat(10,var(--widthLength));
-    justify-content: center;
+    grid-template-columns:repeat(10,var(--widthLength));
+    grid-auto-rows:var(--widthLength);
+    grid-auto-flow:column dense;
+    counter-reset:num;
 }
+.game-board > div:nth-child(20n + 21) { grid-column:10; }
+.game-board > div:nth-child(20n + 22) { grid-column:9; }
+.game-board > div:nth-child(20n + 23) { grid-column:8; }
+.game-board > div:nth-child(20n + 24) { grid-column:7; }
+.game-board > div:nth-child(20n + 25) { grid-column:6; }
+.game-board > div:nth-child(20n + 26) { grid-column:5; }
+.game-board > div:nth-child(20n + 27) { grid-column:4; }
+.game-board > div:nth-child(20n + 28) { grid-column:3; }
+.game-board > div:nth-child(20n + 29) { grid-column:2; }
+.game-board > div:nth-child(20n + 30) { grid-column:1; }
+
 .box {
     background-color: #d9d9d9;
     border: 2px solid black;
+}
+.game-board > div {
+    border:1px solid;
+}
+.game-board > div:before{
+    content:counter(num);
+    counter-increment:num;
 }
