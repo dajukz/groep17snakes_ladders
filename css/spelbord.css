@@ -3,7 +3,6 @@
     --colorWhite: #FFFFFF;
     --colorRed: #FF0000;
 }
-
 body{
     display: flex;
     justify-content: center;
