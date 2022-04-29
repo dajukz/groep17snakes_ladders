@@ -1,5 +1,7 @@
 :root {
     --widthLength: 4em;
+    --colorWhite: #FFFFFF;
+    --colorRed: #FF0000;
 }
 .game-board{
     display: grid;
