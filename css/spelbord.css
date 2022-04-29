@@ -1,0 +1,34 @@
+:root {
+    --widthLength: 4em;
+    --colorWhite: #FFFFFF;
+    --colorRed: #FF0000;
+}
+.game-board{
+    display: grid;
+    grid-template-columns:repeat(10,var(--widthLength));
+    grid-auto-rows:var(--widthLength);
+    grid-auto-flow:row dense;
+    counter-reset:num;
+}
+.game-board > div:nth-child(20n + 11) { grid-column:10; }
+.game-board > div:nth-child(20n + 12) { grid-column:9; }
+.game-board > div:nth-child(20n + 13) { grid-column:8; }
+.game-board > div:nth-child(20n + 14) { grid-column:7; }
+.game-board > div:nth-child(20n + 15) { grid-column:6; }
+.game-board > div:nth-child(20n + 16) { grid-column:5; }
+.game-board > div:nth-child(20n + 17) { grid-column:4; }
+.game-board > div:nth-child(20n + 18) { grid-column:3; }
+.game-board > div:nth-child(20n + 19) { grid-column:2; }
+.game-board > div:nth-child(20n + 20) { grid-column:1; }
+
+.box {
+    background-color: #d9d9d9;
+    border: 2px solid black;
+}
+.game-board > div {
+    border:1px solid;
+}
+.game-board > div:before{
+    content:counter(num);
+    counter-increment:num;
+}
