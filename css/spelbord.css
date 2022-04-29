@@ -3,8 +3,8 @@
 }
 .game-board{
     display: grid;
-    grid-template-columns: var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) ;
-    grid-template-rows: var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength);
+    grid-template-columns: repeat(10,var(--widthLength));
+    grid-template-rows: repeat(10,var(--widthLength));
     justify-content: center;
 }
 .box {
