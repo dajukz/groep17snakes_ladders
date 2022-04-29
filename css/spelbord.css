@@ -1,0 +1,13 @@
+:root {
+    --widthLength: 4em;
+}
+.game-board{
+    display: grid;
+    grid-template-columns: var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) ;
+    grid-template-rows: var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength) var(--widthLength);
+    justify-content: center;
+}
+.box {
+    background-color: #d9d9d9;
+    border: 2px solid black;
+}
