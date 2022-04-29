@@ -21,15 +21,15 @@
     btn.classList.add("red");
     const geworpen = document.querySelector('.geworpen');
 
-    const worp = () => {
-        let worp;
-
+    const gooien = () => {
         dobbelsteen.gooi();
-        worp= dobbelsteen.geefLaatsteWorp()
-        geworpen.innerText = worp;
+        return dobbelsteen.geefLaatsteWorp();
     }
     btn.addEventListener('click', function () {
-            worp();
+            let worp;
+            worp = gooien();
+            geworpen.innerHTML=(worp);
+
     });
 
     /* kleur boxes aanpassen indien dynamisch
