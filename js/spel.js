@@ -23,7 +23,6 @@
     const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
-    let lastIndex;
     let index = 0;
 
     const gooien = () => {
@@ -35,25 +34,28 @@
         boxes[index - 1].appendChild(pawns[pion]);
     }
 
-    btn.addEventListener('click', function () {
-        let geworpen = gooien();
+    const overflow = (dobbel) => {
         let bool;
         if (index === 0) {
-            index += geworpen;
-            lastIndex = index;
-             bool = false;
+            index += dobbel;
+            bool = false;
         } else {
             bool = true;
         }
 
-        if (geworpen > (100 - lastIndex)) {
-            index = (100 - ((geworpen + lastIndex) - 100));
-        } else if (bool){
-            index += geworpen;
+        if (dobbel > (100 - index)) {
+            index = (100 - ((dobbel + index) - 100));
+        } else if (bool) {
+            index += dobbel;
         }
 
-        movePawn(index, 1);
-        lastIndex = index;
+        return index;
+    }
+
+    btn.addEventListener('click', function () {
+        let geworpen = gooien();
+        movePawn(overflow(geworpen), 1);
+
     });
 
     /* kleur boxes aanpassen indien dynamisch
