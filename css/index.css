@@ -16,7 +16,7 @@ body::before {
     height: 100%;
     background-image: url("../img/Mobile\ Homemobile_bg_index.jpg");
     background-position: top left;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     z-index: -1;
@@ -39,7 +39,6 @@ h1 {
     line-height: 1.5em;
     font-size: 1.5rem;
     font-family: var(--font);
-    margin-inline: 5% auto;
     margin-top: 35vh;
 }
 h2 {
@@ -69,17 +68,93 @@ h2 {
 /* 
 *   footer
 */
-.container ul {
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;    
+}
+footer ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     list-style-type: none;
     font-family: var(--font);
+
+}   
+footer li a {
+    text-decoration: none;
+    color: var(--mainColor);
 }
 
 /* 
 responsive etc
 */
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 500px) {
+   
+    
     footer > * {
         display: none;
+    }
+}
+/*
+*   bg img mobile
+*/
+@media only screen and (min-width: 300px) {
+    body::before {
+        background-image: url("../img/mobile_home300_350.jpg");
+    }
+}
+@media only screen and (min-width: 350px) {
+    body::before {
+        background-image: url("../img/mobile_home350_400.jpg");
+    }
+}
+@media only screen and (min-width: 400px) {
+    body::before {
+        background-image: url("../img/mobile_home400_500.jpg");
+    }
+}
+
+/*
+*   desktop
+*   fablet(ish)
+*/
+@media only screen and (min-width: 500px) {
+    body::before {
+        background-image: url("../img/desktop_index_500_750.svg");
+        
+    }
+    h1 {
+        font-size: 1.75em;
+        margin: 25vh 30% 0.75em 30%;
+    }
+    .foregroundImg {
+        width:  50%;
+    }
+    #startbutton {
+        width: clamp(5em,35%,10em);
+    }
+
+    /*
+    *   footer
+    */
+    
+}
+/*
+*   tablet
+*/
+
+@media only screen and (min-width:620px) {
+    h1 {
+        margin: 25vh 35% 0.75em 35%;
+    }
+}
+
+@media only screen and (min-width:700px) {
+    body::before {
+        background-image: url("../img/desktop_index_750_1000.svg");
     }
 }
