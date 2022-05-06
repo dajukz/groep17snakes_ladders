@@ -42,3 +42,7 @@ body{
     content:counter(num);
     counter-increment:num;
 }
+
+.pawns{
+    height: 3em;
+}
