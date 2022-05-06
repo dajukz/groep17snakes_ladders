@@ -23,6 +23,7 @@
     const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
+    let lastIndex;
     let index = 0;
 
     const gooien = () => {
@@ -30,14 +31,30 @@
         geworpen.innerHTML = dobbelsteen.geefLaatsteWorp();
         return dobbelsteen.geefLaatsteWorp();
     }
-    btn.addEventListener('click', function () {
-        index += gooien();
-        movePawn(index, 1);
-        pawns[0].classList.add("red");
-    });
     const movePawn = (index, pion) => {
-        boxes[index-1].appendChild(pawns[pion]);
+        boxes[index - 1].appendChild(pawns[pion]);
     }
+
+    btn.addEventListener('click', function () {
+        let geworpen = gooien();
+        let bool;
+        if (index === 0) {
+            index += geworpen;
+            lastIndex = index;
+             bool = false;
+        } else {
+            bool = true;
+        }
+
+        if (geworpen > (100 - lastIndex)) {
+            index = (100 - ((geworpen + lastIndex) - 100));
+        } else if (bool){
+            index += geworpen;
+        }
+
+        movePawn(index, 1);
+        lastIndex = index;
+    });
 
     /* kleur boxes aanpassen indien dynamisch
      const color = ()=>{
