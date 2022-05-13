@@ -3,6 +3,8 @@
 */
 :root {
     --mainColor: #507C5C;
+    --footerBackgroundColor: #7FB57E;
+    --footerFontColor: black;
     --font: 'Syncopate', sans-serif;
     --fontbtn: 'Snippet', sans-serif;
 }
@@ -33,6 +35,7 @@ body::before {
     align-items: center;
     justify-content: center;
 }
+
 h1 {
     text-align: center;
     color: var(--mainColor);
@@ -41,11 +44,13 @@ h1 {
     font-family: var(--font);
     margin-top: 35vh;
 }
+
 h2 {
     font-family: var(--font);
     font-weight: normal;
-    color: var(--mainColor);
+    color: var(--footerFontColor);
 }
+
 #startbutton {
     display: block;
     border: none;
@@ -54,12 +59,13 @@ h2 {
     color: white;
     font-family: var(--fontbtn);
     font-size: 1.5rem;
-    width: clamp(5em,80%,10em);
+    width: clamp(5em, 80%, 10em);
     height: 7.5vh;
     margin-top: 1rem;
     text-align: center;
 
 }
+
 .foregroundImg {
     width: 75%;
     margin: 5px auto;
@@ -71,8 +77,10 @@ h2 {
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;    
+    left: 0;
+    background-color: var(--footerBackgroundColor);
 }
+
 footer ul {
     display: flex;
     flex-direction: row;
@@ -82,10 +90,11 @@ footer ul {
     list-style-type: none;
     font-family: var(--font);
 
-}   
+}
+
 footer li a {
     text-decoration: none;
-    color: var(--mainColor);
+    color: var(--footerFontColor);
 }
 
 /* 
@@ -93,12 +102,13 @@ responsive etc
 */
 
 @media only screen and (max-width: 500px) {
-   
-    
-    footer > * {
+
+
+    footer>* {
         display: none;
     }
 }
+
 /*
 *   bg img mobile
 */
@@ -107,11 +117,13 @@ responsive etc
         background-image: url("../img/mobile_home300_350.jpg");
     }
 }
+
 @media only screen and (min-width: 350px) {
     body::before {
         background-image: url("../img/mobile_home350_400.jpg");
     }
 }
+
 @media only screen and (min-width: 400px) {
     body::before {
         background-image: url("../img/mobile_home400_500.jpg");
@@ -125,24 +137,28 @@ responsive etc
 @media only screen and (min-width: 500px) {
     body::before {
         background-image: url("../img/desktop_index_500_750.svg");
-        
+
     }
+
     h1 {
         font-size: 1.75em;
         margin: 25vh 30% 0.75em 30%;
     }
+
     .foregroundImg {
-        width:  50%;
+        width: 50%;
     }
+
     #startbutton {
-        width: clamp(5em,35%,10em);
+        width: clamp(5em, 35%, 10em);
     }
 
     /*
     *   footer
     */
-    
+
 }
+
 /*
 *   tablet
 */
