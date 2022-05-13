@@ -19,44 +19,114 @@
     }
 
     const dobbelsteen = new Dobbelsteen(1, 6);
-    const btn = document.querySelector('.btn');
+    const dobbel = document.querySelector('#dobbel');
     const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
-    let index = 0;
+    const index=[];
+    let pion = 0;
+    const spelerInput = document.querySelector('#spelerinput');
+    let spelers = 0;
+    const start = document.querySelector('#start');
+    const error = document.querySelector('#error');
 
     const gooien = () => {
         dobbelsteen.gooi();
         geworpen.innerHTML = dobbelsteen.geefLaatsteWorp();
         return dobbelsteen.geefLaatsteWorp();
     }
-    const movePawn = (index, pion) => {
-        boxes[index - 1].appendChild(pawns[pion]);
+    const movePawn = () => {
+        boxes[index[pion] - 1].appendChild(pawns[pion]);
     }
 
     const overflow = (dobbel) => {
         let bool;
-        if (index === 0) {
-            index += dobbel;
+        if (index[pion] === 0) {
+            index[pion] += dobbel;
             bool = false;
         } else {
             bool = true;
         }
 
-        if (dobbel > (100 - index)) {
-            index = (100 - ((dobbel + index) - 100));
+        if (dobbel > (100 - index[pion])) {
+            index[pion] = (100 - ((dobbel + index[pion]) - 100));
         } else if (bool) {
-            index += dobbel;
+            index[pion] += dobbel;
         }
-
-        return index;
     }
 
-    btn.addEventListener('click', function () {
-        let geworpen = gooien();
-        movePawn(overflow(geworpen), 1);
+    const nextSpeler = () => {
+        if (spelers === "4") {
+            switch (pion){
+                case 0:
+                    pion = 1;
+                    break;
+                case 1:
+                    pion = 2;
+                    break;
 
+                case 2:
+                    pion = 3;
+                    break;
+
+                case 3:
+                    pion = 0;
+                    break;
+
+            }
+        } else if (spelers === "3") {
+            switch (pion){
+                case 0:
+                    pion = 1;
+                    break;
+                case 1:
+                    pion = 2;
+                    break;
+
+                case 2:
+                    pion = 0;
+                    break;
+            }
+        } else if (spelers === "2") {
+            switch (pion){
+                case 0:
+                    pion = 1;
+                    break;
+                case 1:
+                    pion = 0;
+                    break;
+            }
+        }
+    }
+
+    dobbel.addEventListener('click', function () {
+        if (spelers!==0){
+            let geworpen = gooien();
+            overflow(geworpen);
+            movePawn();
+            nextSpeler();
+        }else if (spelers===0){
+            error.innerHTML = (`Start eerst het spel aub!`);
+        }
     });
+
+    const isValid = () => {
+        if (spelerInput.value >= 1 && spelerInput.value <= 4) {
+            error.innerHTML = (`Gestart`);
+            return true;
+        } else {
+            error.innerHTML = (`Aantal spelers moet tussen 1 en 4 liggen.`);
+            return false;
+        }
+    }
+    start.addEventListener('click', function () {
+        if (isValid()) {
+            spelers = spelerInput.value;
+            for (let t = 0 ; t<spelers ; t++){
+                index.push(0);
+            }
+        }
+    })
 
     /* kleur boxes aanpassen indien dynamisch
      const color = ()=>{
