@@ -23,7 +23,9 @@
     const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
+    const cube = document.querySelector('.cube');
     let index = 0;
+    let currentClass = '';
 
     const gooien = () => {
         dobbelsteen.gooi();
@@ -52,11 +54,21 @@
         return index;
     }
 
+    function rollDice() {
+        let randNum = dobbelsteen.geefLaatsteWorp();
+        let showClass = 'show-' + randNum;
+        if ( currentClass ) {
+           cube.classList.remove( currentClass );
+        }
+        cube.classList.add( showClass );
+        currentClass = showClass;
+    }
+
     btn.addEventListener('click', function () {
         let geworpen = gooien();
         movePawn(overflow(geworpen), 1);
-
-    });
+        rollDice();
+    }); 
 
     /* kleur boxes aanpassen indien dynamisch
      const color = ()=>{
