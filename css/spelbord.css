@@ -17,7 +17,8 @@ body {
     grid-auto-flow: row dense;
     counter-reset: num;
     align-self: center;
-    border: 5pt solid var(--colorDarkGreen);
+    height: 40em;
+    width: 40em;
 }
 
 .game-board>div:nth-child(20n + 11) {
@@ -87,4 +88,10 @@ body {
 
 .pawns {
     height: 3em;
+}
+
+.spelbordImg {
+    position: absolute;
+    width: 40em;
+    height: 40em;
 }
