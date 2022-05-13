@@ -1,5 +1,7 @@
 :root {
     --mainColor: #507C5C;
+    --footerBackgroundColor: #7FB57E;
+    --footerFontColor: black;
 }
 
 body::before {
@@ -13,7 +15,7 @@ body::before {
     background-position: top left;
     background-size: contain;
     background-repeat: no-repeat;
-    
+
     z-index: -1;
 
 }
