@@ -29,6 +29,8 @@
     let spelers = 0;
     const start = document.querySelector('#start');
     const error = document.querySelector('#error');
+    const slangen = [[36, 50, 56, 87, 92, 99],[3, 14, 41, 64, 71, 62]];
+    const ladders = [[2, 9, 49, 55, 61],[43, 34, 89, 76, 98]];
 
     const gooien = () => {
         dobbelsteen.gooi();
@@ -39,7 +41,7 @@
         boxes[index[pion] - 1].appendChild(pawns[pion]);
     }
 
-    const overflow = (dobbel) => {
+    const plaatsbepaling = (dobbel) => {
         let bool;
         if (index[pion] === 0) {
             index[pion] += dobbel;
@@ -53,6 +55,15 @@
         } else if (bool) {
             index[pion] += dobbel;
         }
+
+        slangen[0].forEach(e =>{
+            if (index[pion]===e){
+                index[pion]=slangen[1][slangen[0].indexOf(e)];
+            } else if(index[pion]===e){
+                index[pion]=ladders[1][slangen[0].indexOf(e)];
+            }
+        })
+
     }
 
     const nextSpeler = () => {
@@ -102,7 +113,7 @@
     dobbel.addEventListener('click', function () {
         if (spelers!==0){
             let geworpen = gooien();
-            overflow(geworpen);
+            plaatsbepaling(geworpen);
             movePawn();
             nextSpeler();
         }else if (spelers===0){
