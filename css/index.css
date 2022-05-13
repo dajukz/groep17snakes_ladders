@@ -182,4 +182,12 @@ responsive etc
     body::before {
         background-image: url("../img/desktop_index_1000_more.svg");
     }
+    width: 125%;
+    height: 100%;
+    background-image: url("../img/Mobile\ Spel.svg");
+    background-position: top left;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    z-index: -1;
 }
