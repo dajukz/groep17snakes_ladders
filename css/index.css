@@ -114,19 +114,19 @@ responsive etc
 */
 @media only screen and (min-width: 300px) {
     body::before {
-        background-image: url("../img/mobile_home300_350.jpg");
+        background-image: url("../img/mobile_home300_350.svg");
     }
 }
 
 @media only screen and (min-width: 350px) {
     body::before {
-        background-image: url("../img/mobile_home350_400.jpg");
+        background-image: url("../img/mobile_home350_400.svg");
     }
 }
 
 @media only screen and (min-width: 400px) {
     body::before {
-        background-image: url("../img/mobile_home400_500.jpg");
+        background-image: url("../img/mobile_home400_500.svg");
     }
 }
 
@@ -172,5 +172,11 @@ responsive etc
 @media only screen and (min-width:700px) {
     body::before {
         background-image: url("../img/desktop_index_750_1000.svg");
+    }
+}
+
+@media only screen and (min-width: 950px) {
+    body::before {
+        background-image: url("../img/desktop_index_1000_more.svg");
     }
 }
