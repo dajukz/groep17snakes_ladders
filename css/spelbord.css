@@ -5,6 +5,7 @@
     --colorDarkGreen: #3F6349;
 }
 
+
 body {
     display: flex;
     justify-content: center;
@@ -66,7 +67,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .game-board>div {
