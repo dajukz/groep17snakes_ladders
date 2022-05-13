@@ -73,13 +73,13 @@
             index[pion] += dobbel;
         }
 
-        slangen[0].forEach(e =>{
-            if (index[pion]===e){
-                index[pion]=slangen[1][slangen[0].indexOf(e)];
-            } else if(index[pion]===e){
-                index[pion]=ladders[1][slangen[0].indexOf(e)];
+        for (let t = 0 ; t<(slangen.length) ; t++){
+            if (index[pion]===slangen[0][t]){
+                index[pion]=slangen[1][t];
+            } else if(index[pion]===ladders[0][t]){
+                index[pion]=ladders[1][t];
             }
-        })
+        }
 
     }
 
