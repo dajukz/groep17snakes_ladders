@@ -49,6 +49,7 @@ h2 {
     font-family: var(--font);
     font-weight: normal;
     color: var(--footerFontColor);
+    text-align: center;
 }
 
 #startbutton {
@@ -79,6 +80,8 @@ footer {
     bottom: 0;
     left: 0;
     background-color: var(--footerBackgroundColor);
+    width: 100%;
+    padding-bottom: 10px;
 }
 
 footer ul {
@@ -89,12 +92,12 @@ footer ul {
     text-align: center;
     list-style-type: none;
     font-family: var(--font);
-
 }
 
 footer li a {
     text-decoration: none;
     color: var(--footerFontColor);
+    padding: 10px;
 }
 
 /* 
