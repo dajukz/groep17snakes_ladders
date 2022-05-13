@@ -3,12 +3,17 @@
     --colorWhite: #FFFFFF;
     --colorRed: #FF0000;
 }
+body{
+    display: flex;
+    justify-content: center;
+}
 .game-board{
     display: grid;
     grid-template-columns:repeat(10,var(--widthLength));
     grid-auto-rows:var(--widthLength);
     grid-auto-flow:row dense;
     counter-reset:num;
+    align-self: center;
 }
 .game-board > div:nth-child(20n + 11) { grid-column:10; }
 .game-board > div:nth-child(20n + 12) { grid-column:9; }
@@ -22,11 +27,16 @@
 .game-board > div:nth-child(20n + 20) { grid-column:1; }
 
 .box {
-    background-color: #d9d9d9;
     border: 2px solid black;
 }
 .game-board > div {
     border:1px solid;
+}
+.box:nth-of-type(2n) {
+    background-color: var(--colorWhite);
+}
+.box:nth-of-type(2n+1) {
+    background-color: var(--colorRed);
 }
 .game-board > div:before{
     content:counter(num);
