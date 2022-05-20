@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,19 @@
     <link rel="stylesheet" href="../css/spelbord.css">
 </head>
 <body>
+<div class="setup">
+    <label for="spelerinput">Aantal spelers:</label>
+    <input class="spelers" id="spelerinput" type="number" placeholder="1-4">
+    <button id="start" class="btn">placeholder start</button>
+    <span id="error"></span>
+</div>
+<div class="pions">
+    <img class="pawns bPawn" src="../img/PionBlauw.svg" alt="Blue pawn">
+    <img class="pawns yPawn" src="../img/PionGeel.svg" alt="Yellow pawn">
+    <img class="pawns gPawn" src="../img/PionGroen.svg" alt="Green pawn">
+    <img class="pawns rPawn" src="../img/PionRood.svg" alt="Red pawn">
+</div>
+
 <div class = "game-board">
     <div class="box"></div>
     <div class="box"></div>
@@ -109,7 +123,21 @@
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
+    <img src="../img/Spelbord.png" alt="Spelbord.png" class="spelbordImg">
+</div>
+<div class = "scene">
+    <div class="cube">
+     <div class="cube__face cube__face--1">1</div>
+     <div class="cube__face cube__face--2">2</div>
+     <div class="cube__face cube__face--3">3</div>
+     <div class="cube__face cube__face--4">4</div>
+     <div class="cube__face cube__face--5">5</div>
+     <div class="cube__face cube__face--6">6</div>
+    </div>
+    <button id="dobbel"class="btn">placeholder dobbelsteen</button>
+    <p class="geworpen"></p>
 </div>
 <script src="../js/spel.js"></script>
 </body>
+
 </html>
