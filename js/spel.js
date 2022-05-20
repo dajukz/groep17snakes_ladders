@@ -51,7 +51,7 @@
     const slangen1 = [[36, 50, 56, 87, 92, 99],[3, 14, 41, 64, 71, 62]];
     const slangen2 = [[37, 56, 67, 91, 96, 99],[2, 43, 35, 72, 64, 62]];
     const slangen3 = [[30, 42, 56, 88, 94, 98],[13, 4, 15, 67, 66, 61]];
-    const slagnen4 = [[42, 50, 66, 76, 88, 96], [4, 12, 26, 55, 67, 58]];
+    const slangen4 = [[42, 50, 66, 76, 88, 96], [4, 12, 26, 55, 67, 58]];
     const ladders1 = [[2, 9, 49, 55, 61],[43, 34, 89, 76, 98]];
     const ladders2 = [[3, 10, 38, 51, 61], [26, 33, 59, 87, 83]];
     const ladders3 = [[2, 28, 35, 40, 70, 76], [44, 69, 65, 90, 97]];
@@ -66,15 +66,16 @@
     }
     const movePawn = () => {
         const currentpawn = pawns[pion];
-        const box = currentpawn.getBoundingClientRect();
+        const box = boxes[index[pion] - 1].getBoundingClientRect();
         const offsettop = box.top -(document.body.getBoundingClientRect().top);
         const offsetleft = box.left -(document.body.getBoundingClientRect().left);
         boxes[index[pion] - 1].appendChild(currentpawn);
         currentpawn.classList.add('pawnsmoved');
         switch (pion){
             case 0:
-                currentpawn.style.top =`${offsettop}`;
-                currentpawn.style.left =`${offsetleft}`;
+
+                currentpawn.style.top =`${offsettop}px`;
+                currentpawn.style.left =`${offsetleft}px`;
                 break;
             case 1:
                 currentpawn.style.top ="";
