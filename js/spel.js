@@ -48,6 +48,14 @@
     const error = document.querySelector('#error');
     const slangen = [[36, 50, 56, 87, 92, 99],[3, 14, 41, 64, 71, 62]];
     const ladders = [[2, 9, 49, 55, 61],[43, 34, 89, 76, 98]];
+    const slangen1 = [[36, 50, 56, 87, 92, 99],[3, 14, 41, 64, 71, 62]];
+    const slangen2 = [[37, 56, 67, 91, 96, 99],[2, 43, 35, 72, 64, 62]];
+    const slangen3 = [[30, 42, 56, 88, 94, 98],[13, 4, 15, 67, 66, 61]];
+    const slagnen4 = [[42, 50, 66, 76, 88, 96], [4, 12, 26, 55, 67, 58]];
+    const ladders1 = [[2, 9, 49, 55, 61],[43, 34, 89, 76, 98]];
+    const ladders2 = [[3, 10, 38, 51, 61], [26, 33, 59, 87, 83]];
+    const ladders3 = [[2, 28, 35, 40, 70, 76], [44, 69, 65, 90, 97]];
+    const ladders4 = [[2, 25, 28, 57, 62], [44, 46, 69, 78, 83]];
     const cube = document.querySelector('.cube');
     let currentClass = '';
 
