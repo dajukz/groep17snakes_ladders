@@ -76,18 +76,15 @@ body {
 
 .box:nth-of-type(2n) {
     background-color: var(--colorWhite);
-    z-index: -2;
 }
 
 .box:nth-of-type(2n+1) {
     background-color: var(--colorGreen);
-    z-index: -2;
 }
 
 .game-board>div:before {
     content: counter(num);
     counter-increment: num;
-    z-index: -1;
 }
 
 .pawns {
@@ -103,7 +100,6 @@ body {
     position: absolute;
     width: var(--boardSize);
     height: var(--boardSize);
-    z-index: -1;
 }
 
 * { box-sizing: border-box; }

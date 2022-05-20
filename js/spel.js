@@ -65,28 +65,32 @@
         return dobbelsteen.geefLaatsteWorp();
     }
     const movePawn = () => {
-        const currentpawn = pawns[pion];
-        const box = boxes[index[pion] - 1].getBoundingClientRect();
-        const offsettop = box.top -(document.body.getBoundingClientRect().top);
-        const offsetleft = box.left -(document.body.getBoundingClientRect().left);
+        let currentpawn = pawns[pion];
+        let box = boxes[index[pion] - 1].getBoundingClientRect();
+        let cpawn = currentpawn.getBoundingClientRect();
+        const body =document.body.getBoundingClientRect();
+        let offsettop = box.top -(body.top);
+        let offsetBottom = box.bottom -(body.top);
+        let offsetleft = box.left -(body.left);
+        let offsetRight = box.right -(body.left);
+
         currentpawn.classList.add('pawnsmoved');
         switch (pion){
             case 0:
-
-                currentpawn.style.top =`${offsettop+10}px`;
-                currentpawn.style.left =`${offsetleft}px`;
+                currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
+                currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
                 break;
             case 1:
-                currentpawn.style.top ="";
-                currentpawn.style.left ="";
+                currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
+                currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
                 break;
             case 2:
-                currentpawn.style.top ="";
-                currentpawn.style.left ="";
+                currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
+                currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
                 break;
             case 3:
-                currentpawn.style.top ="";
-                currentpawn.style.left ="";
+                currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
+                currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
                 break;
         }
 
