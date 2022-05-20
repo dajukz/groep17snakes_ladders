@@ -48,6 +48,8 @@
     const error = document.querySelector('#error');
     const slangen = [[36, 50, 56, 87, 92, 99],[3, 14, 41, 64, 71, 62]];
     const ladders = [[2, 9, 49, 55, 61],[43, 34, 89, 76, 98]];
+    const cube = document.querySelector('.cube');
+    let currentClass = '';
 
     const gooien = () => {
         dobbelsteen.gooi();
@@ -127,12 +129,23 @@
         }
     }
 
+    const rollDice = () => {
+        let randNum = dobbelsteen.geefLaatsteWorp();
+        let showClass = 'show-' + randNum;
+        if (currentClass) {
+            cube.classList.remove(currentClass);
+        }
+        cube.classList.add(showClass);
+        currentClass = showClass;
+    }
+
     dobbel.addEventListener('click', function () {
         if (spelers!==0){
             let geworpen = gooien();
             plaatsbepaling(geworpen);
             movePawn();
             nextSpeler();
+            rollDice();
         }else if (spelers===0){
             error.innerHTML = (`Start eerst het spel aub!`);
         }
