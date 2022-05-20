@@ -1,5 +1,6 @@
 :root {
-    --widthLength: 4em;
+    --widthLength: 5em;
+    --boardSize: calc(var(--widthLength)*10);
     --colorWhite: #FFFFFF;
     --colorGreen: #BDC730;
     --colorDarkGreen: #3F6349;
@@ -18,8 +19,8 @@ body {
     grid-auto-flow: row dense;
     counter-reset: num;
     align-self: center;
-    height: 40em;
-    width: 40em;
+    height: var(--boardSize);
+    width: var(--boardSize);
 }
 
 .game-board>div:nth-child(20n + 11) {
@@ -75,25 +76,33 @@ body {
 
 .box:nth-of-type(2n) {
     background-color: var(--colorWhite);
+    z-index: -2;
 }
 
 .box:nth-of-type(2n+1) {
     background-color: var(--colorGreen);
+    z-index: -2;
 }
 
 .game-board>div:before {
     content: counter(num);
     counter-increment: num;
+    z-index: -1;
 }
 
 .pawns {
-    height: 3em;
+    height: calc(var(--widthLength)/2);
+}
+
+.pawnsmoved{
+    position: absolute;
+    z-index: 2;
 }
 
 .spelbordImg {
     position: absolute;
-    width: 40em;
-    height: 40em;
+    width: var(--boardSize);
+    height: var(--boardSize);
 }
 
 * { box-sizing: border-box; }

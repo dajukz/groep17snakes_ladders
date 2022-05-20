@@ -65,7 +65,31 @@
         return dobbelsteen.geefLaatsteWorp();
     }
     const movePawn = () => {
-        boxes[index[pion] - 1].appendChild(pawns[pion]);
+        const currentpawn = pawns[pion];
+        const box = currentpawn.getBoundingClientRect();
+        const offsettop = box.top -(document.body.getBoundingClientRect().top);
+        const offsetleft = box.left -(document.body.getBoundingClientRect().left);
+        boxes[index[pion] - 1].appendChild(currentpawn);
+        currentpawn.classList.add('pawnsmoved');
+        switch (pion){
+            case 0:
+                currentpawn.style.top =`${offsettop}`;
+                currentpawn.style.left =`${offsetleft}`;
+                break;
+            case 1:
+                currentpawn.style.top ="";
+                currentpawn.style.left ="";
+                break;
+            case 2:
+                currentpawn.style.top ="";
+                currentpawn.style.left ="";
+                break;
+            case 3:
+                currentpawn.style.top ="";
+                currentpawn.style.left ="";
+                break;
+        }
+
     }
 
     const plaatsbepaling = (dobbel) => {
@@ -149,6 +173,7 @@
 
     dobbel.addEventListener('click', function () {
         if (spelers!==0){
+            error.innerHTML=(`${spelers} spelers. Huidige speler: ${pion+1}`)
             let geworpen = gooien();
             plaatsbepaling(geworpen);
             movePawn();
@@ -161,7 +186,7 @@
 
     const isValid = () => {
         if (spelerInput.value >= 1 && spelerInput.value <= 4) {
-            error.innerHTML = (`Gestart`);
+            error.innerHTML = (`Gestart met ${spelerInput.value} spelers. Eerste speler: ${pion+1}`);
             return true;
         } else {
             error.innerHTML = (`Aantal spelers moet tussen 1 en 4 liggen.`);
