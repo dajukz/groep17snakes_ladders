@@ -69,12 +69,11 @@
         const box = boxes[index[pion] - 1].getBoundingClientRect();
         const offsettop = box.top -(document.body.getBoundingClientRect().top);
         const offsetleft = box.left -(document.body.getBoundingClientRect().left);
-        boxes[index[pion] - 1].appendChild(currentpawn);
         currentpawn.classList.add('pawnsmoved');
         switch (pion){
             case 0:
 
-                currentpawn.style.top =`${offsettop}px`;
+                currentpawn.style.top =`${offsettop+10}px`;
                 currentpawn.style.left =`${offsetleft}px`;
                 break;
             case 1:
@@ -108,7 +107,8 @@
             index[pion] += dobbel;
         }
 
-        for (let t = 0 ; t<(slangen.length) ; t++){
+
+        for (let t = 0 ; t<(slangen[0].length) ; t++){
             if (index[pion]===slangen[0][t]){
                 index[pion]=slangen[1][t];
             } else if(index[pion]===ladders[0][t]){
@@ -202,6 +202,7 @@
             }
         }
     })
+    window.onresize =(movePawn);
 
     /* kleur boxes aanpassen indien dynamisch
      const color = ()=>{
