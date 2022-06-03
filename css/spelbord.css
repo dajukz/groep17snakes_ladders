@@ -103,13 +103,14 @@ p {
 
 .pawnsmoved {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 }
 
 .spelbordImg {
     position: absolute;
     width: var(--boardSize);
     height: var(--boardSize);
+    z-index: -1;
 }
 
 * {
