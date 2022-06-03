@@ -65,35 +65,38 @@
         return dobbelsteen.geefLaatsteWorp();
     }
     const movePawn = () => {
-        let currentpawn = pawns[pion];
-        let box = boxes[index[pion] - 1].getBoundingClientRect();
-        let cpawn = currentpawn.getBoundingClientRect();
-        const body =document.body.getBoundingClientRect();
-        let offsettop = box.top -(body.top);
-        let offsetBottom = box.bottom -(body.top);
-        let offsetleft = box.left -(body.left);
-        let offsetRight = box.right -(body.left);
+        index.forEach((e)=>{
+            if (e){
+                let currentpawn = pawns[index.indexOf(e)];
+                let box = boxes[index[index.indexOf(e)] - 1].getBoundingClientRect();
+                let cpawn = currentpawn.getBoundingClientRect();
+                const body =document.body.getBoundingClientRect();
+                let offsettop = box.top -(body.top);
+                let offsetBottom = box.bottom -(body.top);
+                let offsetleft = box.left -(body.left);
+                let offsetRight = box.right -(body.left);
 
-        currentpawn.classList.add('pawnsmoved');
-        switch (pion){
-            case 0:
-                currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
-                currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
-                break;
-            case 1:
-                currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
-                currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
-                break;
-            case 2:
-                currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
-                currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
-                break;
-            case 3:
-                currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
-                currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
-                break;
-        }
-
+                currentpawn.classList.add('pawnsmoved');
+                switch (pion){
+                    case 0:
+                        currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
+                        currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
+                        break;
+                    case 1:
+                        currentpawn.style.top =`${offsettop+(cpawn.height/4)}px`;
+                        currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
+                        break;
+                    case 2:
+                        currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
+                        currentpawn.style.left =`${offsetleft+(cpawn.width/3)}px`;
+                        break;
+                    case 3:
+                        currentpawn.style.top =`${offsetBottom-(cpawn.height*0.8)}px`;
+                        currentpawn.style.left =`${offsetRight-(cpawn.width/1.5)-2}px`;
+                        break;
+                }
+            }
+        })
     }
 
     const plaatsbepaling = (dobbel) => {
@@ -178,6 +181,7 @@
 
 const truthOrDare = ()=>{
 const kader = document.createElement("div");
+const titel = document.createElement("h3");
 };
 
     dobbel.addEventListener('click', function () {
