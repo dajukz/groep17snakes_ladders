@@ -40,7 +40,8 @@
     const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
-    const index = [];
+    const index=[];
+    let hasOverlap = [false, false, false, false]; // pas true als er 1 van de pionnen op de positie van een andere terechtkomt
     let pion = 0;
     const spelerInput = document.querySelector('#spelerinput');
     let spelers = 0;
@@ -99,6 +100,25 @@
         })
     }
 
+    const beurtOverslaan = () => {
+        if (hasOverlap.includes(true)) {
+            if (hasOverlap[pion]) {
+                hasOverlap[pion] = false;
+                console.log(`${pion} moet een beurt overslaan`);
+                nextSpeler();
+                
+            }
+        }
+        return null;
+    }
+
+    const whereWinner = () => {
+        if(index.includes(100)) {
+            return index.indexOf(100);
+        }
+        return null;
+    }
+
     const plaatsbepaling = (dobbel) => {
         let bool;
         if (index[pion] === 0) {
@@ -122,28 +142,35 @@
                 index[pion] = ladders[1][t];
             }
         }
+        index.forEach(element => {
+            if (index.indexOf(element) === pion) {
+                return;
+            } else if (element === index[pion]) {
+                hasOverlap[pion] = true;
+            }
+        })
 
     }
 
     const nextSpeler = () => {
         if (spelers === "4") {
-            switch (pion) {
-                case 0:
-                    pion = 1;
-                    break;
-                case 1:
-                    pion = 2;
-                    break;
-
-                case 2:
-                    pion = 3;
-                    break;
-
-                case 3:
-                    pion = 0;
-                    break;
-
-            }
+                switch (pion){
+                    case 0:
+                        pion = 1;
+                        break;
+                    case 1:
+                        pion = 2;
+                        break;
+    
+                    case 2:
+                        pion = 3;
+                        break;
+    
+                    case 3:
+                        pion = 0;
+                        break;
+    
+                }
         } else if (spelers === "3") {
             switch (pion) {
                 case 0:
@@ -207,14 +234,20 @@
     };
 
     dobbel.addEventListener('click', function () {
-        if (spelers !== 0) {
-            error.innerHTML = (`${spelers} spelers. Huidige speler: ${pion + 1}`);
-            let geworpen = gooien();
-            plaatsbepaling(geworpen);
-            movePawn();
-            nextSpeler();
-            rollDice();
-        } else if (spelers === 0) {
+        if (spelers!==0){
+            error.innerHTML=(`${spelers} spelers. Huidige speler: ${pion+1}`)
+            if (whereWinner() !== null) {
+                document.querySelector(".scene").remove();
+                movePawn();
+            } else {
+                beurtOverslaan();
+                let geworpen = gooien();
+                plaatsbepaling(geworpen);
+                movePawn();
+                nextSpeler();
+                rollDice();
+            }
+        }else if (spelers===0){
             error.innerHTML = (`Start eerst het spel aub!`);
         }
     });
