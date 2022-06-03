@@ -54,11 +54,28 @@
     const slangen3 = [[30, 42, 56, 88, 94, 98], [13, 4, 15, 67, 66, 61]];
     const slangen4 = [[42, 50, 66, 76, 88, 96], [4, 12, 26, 55, 67, 58]];
     const ladders1 = [[2, 9, 49, 55, 61], [43, 34, 89, 76, 98]];
-    const ladders2 = [[3, 10, 38, 51, 61], [26, 33, 59, 87, 83]];
-    const ladders3 = [[2, 28, 35, 40, 70, 76], [44, 69, 65, 90, 97]];
-    const ladders4 = [[2, 25, 28, 57, 62], [44, 46, 69, 78, 83]];
+    const ladders2 = [[3, 10, 38, 51], [26, 33, 59, 87]];
+    const ladders3 = [[2, 28, 35, 40], [44, 69, 65,  59]];
+    const ladders4 = [[2, 25, 28, 62], [44, 46, 69, 83]];
     const cube = document.querySelector('.cube');
     let currentClass = '';
+    let randomBord = Math.floor(Math.random() * (4) + 1);
+    console.log(randomBord);
+
+    switch (randomBord) {
+        case 1: 
+            document.getElementById("spelbordImg").src = "../img/Spelbord1.png";
+            break;
+        case 2: 
+            document.getElementById("spelbordImg").src = "../img/Spelbord2.png";
+            break;
+        case 3: 
+            document.getElementById("spelbordImg").src = "../img/Spelbord3.png";
+            break;
+        case 4: 
+            document.getElementById("spelbordImg").src = "../img/Spelbord4.png";
+            break;
+    }
 
     const gooien = () => {
         dobbelsteen.gooi();
@@ -127,21 +144,51 @@
         } else {
             bool = true;
         }
+        switch(randomBord) {
+            case 1:
+                for (let t = 0 ; t<(slangen.length) ; t++){
+                    if (index[pion]===slangen1[0][t]){
+                        index[pion]=slangen1[1][t];
+                    } else if(index[pion]===ladders1[0][t]){
+                        index[pion]=ladders1[1][t];
+                    }
+                }
+                break;
+            case 2:
+                for (let t = 0 ; t<(slangen.length) ; t++){
+                    if (index[pion]===slangen2[0][t]){
+                        index[pion]=slangen2[1][t];
+                    } else if(index[pion]===ladders2[0][t]){
+                        index[pion]=ladders2[1][t];
+                    }
+                }
+                break;
+            case 3:
+                for (let t = 0 ; t<(slangen.length) ; t++){
+                    if (index[pion]===slangen3[0][t]){
+                        index[pion]=slangen3[1][t];
+                    } else if(index[pion]===ladders3[0][t]){
+                        index[pion]=ladders3[1][t];
+                    }
+                }
+                break;
+            case 4:
+                for (let t = 0 ; t<(slangen.length) ; t++){
+                    if (index[pion]===slangen4[0][t]){
+                        index[pion]=slangen4[1][t];
+                    } else if(index[pion]===ladders4[0][t]){
+                        index[pion]=ladders4[1][t];
+                    }
+                }
+                break;    
+        }
 
         if (dobbel > (100 - index[pion])) {
             index[pion] = (100 - ((dobbel + index[pion]) - 100));
         } else if (bool) {
             index[pion] += dobbel;
         }
-
-
-        for (let t = 0; t < (slangen[0].length); t++) {
-            if (index[pion] === slangen[0][t]) {
-                index[pion] = slangen[1][t];
-            } else if (index[pion] === ladders[0][t]) {
-                index[pion] = ladders[1][t];
-            }
-        }
+        
         index.forEach(element => {
             if (index.indexOf(element) === pion) {
                 return;
