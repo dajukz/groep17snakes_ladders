@@ -252,7 +252,7 @@ span {
     border-radius: 4rem;
     background-color: var(--mainColor);
     color: var(--btnColor);
-    font-family: var(--fontbtn);
+    font-family: var(--fontBtn);
     font-size: 1.2rem;
     width: clamp(1em, 80%, 5em);
     height: 3.5vh;
@@ -270,7 +270,7 @@ span {
     border-radius: 4rem;
     background-color: var(--mainColor);
     color: var(--btnColor);
-    font-family: var(--fontbtn);
+    font-family: var(--fontBtn);
     font-size: 1.2rem;
     width: clamp(7em, 80%, 9em);
     height: 3.5vh;

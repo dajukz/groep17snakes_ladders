@@ -8,7 +8,7 @@
     --footerFontColor: black;
     --btnColor: white;
     --font: 'Syncopate', sans-serif;
-    --fontbtn: 'Snippet', sans-serif;
+    --fontBtn: 'Snippet', sans-serif;
 }
 
 body::before {
@@ -61,7 +61,7 @@ h2 {
     border-radius: 4rem;
     background-color: var(--mainColor);
     color: var(--btnColor);
-    font-family: var(--fontbtn);
+    font-family: var(--fontBtn);
     font-size: 1.5rem;
     width: clamp(5em, 80%, 10em);
     height: 7.5vh;
@@ -77,7 +77,7 @@ h2 {
     line-height: 1em;
     text-decoration: none;
     color: var(--btnColor);
-    font-family: var(--fontbtn);
+    font-family: var(--fontBtn);
     font-size: 1.5rem;
 }
 
@@ -132,7 +132,7 @@ responsive etc
 
 /*
 *   desktop
-*   fablet(ish)
+*   tablet(ish)
 */
 
 @media only screen and (min-width: 500px) {
