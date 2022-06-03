@@ -174,11 +174,15 @@
         }
         cube.classList.add(showClass);
         currentClass = showClass;
-    }
+    };
+
+const truthOrDare = ()=>{
+const kader = document.createElement("div");
+};
 
     dobbel.addEventListener('click', function () {
         if (spelers!==0){
-            error.innerHTML=(`${spelers} spelers. Huidige speler: ${pion+1}`)
+            error.innerHTML=(`${spelers} spelers. Huidige speler: ${pion+1}`);
             let geworpen = gooien();
             plaatsbepaling(geworpen);
             movePawn();
