@@ -292,5 +292,6 @@ footer li a {
     main{
         flex-direction: row;
         justify-content: space-evenly;
+        margin-top: 2rem;
     }
 }
