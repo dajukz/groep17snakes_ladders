@@ -145,7 +145,6 @@ main {
 
 .box:nth-of-type(2n) {
     background-color: var(--colorWhite);
-    z-index: -2;
 }
 
 .box:nth-of-type(2n+1) {
