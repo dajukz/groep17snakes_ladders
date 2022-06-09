@@ -112,7 +112,7 @@
         if (hasOverlap.includes(true)) {
             if (hasOverlap[pion]) {
                 hasOverlap[pion] = false;
-                window.alert(`${pion} moet een beurt overslaan`);
+                window.alert(`${pion+1} moet een beurt overslaan`);
                 return true;
             }
         }
@@ -220,6 +220,7 @@
             if (whereWinner() !== null) {
                 document.querySelector(".scene").remove();
                 movePawn();
+                window.location.href = "/endGame.html";
             } else if (!beurtOverslaan()){
                 let geworpen = gooien();
                 plaatsbepaling(geworpen);
