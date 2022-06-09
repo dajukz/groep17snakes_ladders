@@ -20,7 +20,6 @@
 
     const dobbelsteen = new Dobbelsteen(1, 6);
     const dobbel = document.querySelector('#dobbel');
-    const geworpen = document.querySelector('.geworpen');
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
     const index=[];
@@ -69,7 +68,6 @@
 
     const gooien = () => {
         dobbelsteen.gooi();
-        geworpen.innerHTML = dobbelsteen.geefLaatsteWorp();
         return dobbelsteen.geefLaatsteWorp();
     }
     const movePawn = () => {
@@ -88,19 +86,19 @@
                 switch (i) {
                     case 0:
                         currentpawn.style.top = `${offsettop + (cpawn.height / 4)}px`;
-                        currentpawn.style.left = `${offsetleft + (cpawn.width / 3)}px`;
+                        currentpawn.style.left = `${offsetleft + (cpawn.width / 4)}px`;
                         break;
                     case 1:
-                        currentpawn.style.top = `${offsettop + (cpawn.height / 4)}px`;
-                        currentpawn.style.left = `${offsetRight - (cpawn.width / 1.5) - 2}px`;
+                        currentpawn.style.top = `${offsettop + (cpawn.height / 3.6)}px`;
+                        currentpawn.style.left = `${offsetRight - (cpawn.width ) }px`;
                         break;
                     case 2:
-                        currentpawn.style.top = `${offsetBottom - (cpawn.height * 0.8)}px`;
+                        currentpawn.style.top = `${offsetBottom - (cpawn.height)}px`;
                         currentpawn.style.left = `${offsetleft + (cpawn.width / 3)}px`;
                         break;
                     case 3:
-                        currentpawn.style.top = `${offsetBottom - (cpawn.height * 0.8)}px`;
-                        currentpawn.style.left = `${offsetRight - (cpawn.width / 1.5) - 2}px`;
+                        currentpawn.style.top = `${offsetBottom - (cpawn.height)}px`;
+                        currentpawn.style.left = `${offsetRight - (cpawn.width)}px`;
                         break;
                 }
             }
