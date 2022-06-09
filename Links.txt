@@ -1,2 +1,4 @@
 github: https://github.com/dajukz/groep17snakes_ladders
 figma: https://www.figma.com/file/6r3ql0XSt4V4Ie7u3rVUtD/Spel?node-id=0%3A1
+
+hosting : https://snakesnladders.arnevanhyfte.ikdoeict.be/
