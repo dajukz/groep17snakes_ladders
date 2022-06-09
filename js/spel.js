@@ -1,22 +1,5 @@
 "use strict";
 
-
-/*(function (){
-
-
-
-   /* kleur boxes aanpassen indien dynamisch
-    const color = ()=>{
-        const boxes = document.querySelectorAll('.box');
-        for (let t =0 ; t<boxes.length ; t++){
-            if (t%2===0){
-                boxes[t].classList.add("red");
-            }else {
-                boxes[t].classList.add("white");
-            }
-        }
-    }*/
-
 (function () {
 
     class Dobbelsteen {
@@ -41,7 +24,7 @@
     const boxes = document.querySelectorAll('.box');
     const pawns = document.querySelectorAll('.pawns');
     const index=[];
-    let hasOverlap = [false, false, false, false]; // pas true als er 1 van de pionnen op de positie van een andere terechtkomt
+    let hasOverlap = []; // pas true als er 1 van de pionnen op de positie van een andere terechtkomt
     let pion = 0;
     const spelerInput = document.querySelector('#spelerinput');
     let spelers = 0;
@@ -60,7 +43,6 @@
     const cube = document.querySelector('.cube');
     let currentClass = '';
     let randomBord = Math.floor(Math.random() * (4) + 1);
-    console.log(randomBord);
 
     switch (randomBord) {
         case 1:
@@ -91,10 +73,10 @@
         return dobbelsteen.geefLaatsteWorp();
     }
     const movePawn = () => {
-        index.forEach((e) => {
-            if (e) {
-                let currentpawn = pawns[index.indexOf(e)];
-                let box = boxes[index[index.indexOf(e)] - 1].getBoundingClientRect();
+        for (let i = 0; i<index.length; i++){
+            if (index[i]){
+                let currentpawn = pawns[i];
+                let box = boxes[index[i] - 1].getBoundingClientRect();
                 let cpawn = currentpawn.getBoundingClientRect();
                 const body = document.body.getBoundingClientRect();
                 let offsettop = box.top - (body.top);
@@ -103,7 +85,7 @@
                 let offsetRight = box.right - (body.left);
 
                 currentpawn.classList.add('pawnsmoved');
-                switch (index.indexOf(e)) {
+                switch (i) {
                     case 0:
                         currentpawn.style.top = `${offsettop + (cpawn.height / 4)}px`;
                         currentpawn.style.left = `${offsetleft + (cpawn.width / 3)}px`;
@@ -122,19 +104,21 @@
                         break;
                 }
             }
-        })
+
+        }
+
     }
 
     const beurtOverslaan = () => {
+
         if (hasOverlap.includes(true)) {
             if (hasOverlap[pion]) {
                 hasOverlap[pion] = false;
-                console.log(`${pion} moet een beurt overslaan`);
-                nextSpeler();
-                
+                window.alert(`${pion} moet een beurt overslaan`);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     const whereWinner = () => {
@@ -166,14 +150,14 @@
                 index[pion] = ladders[1][t];
             }
         }
-        
-        index.forEach(element => {
-            if (index.indexOf(element) === pion) {
-                return;
-            } else if (element === index[pion]) {
-                hasOverlap[pion] = true;
+
+        for (let i = 0 ; i<index.length ; i++){
+            if (i!==pion){
+                if (index[i]===index[pion]){
+                    hasOverlap[pion] = true;
+                }
             }
-        })
+        }
 
     }
 
@@ -231,32 +215,6 @@
         currentClass = showClass;
     };
 
-    const truthOrDare = () => {
-        const kader = document.createElement("div");
-        const titel = document.createElement("h3");
-        const instructie = document.createElement("p");
-        const yesNoDiv = document.createElement("div");
-        const yes = document.createElement("button");
-        const no = document.createElement("button");
-        let t =0;
-        yesNoDiv.appendChild(yes);
-        yesNoDiv.appendChild(no);
-
-        titel.innerText = (`Challenge Snake?`);
-        yes.innerText = (`Yes`);
-        no.innerText = (`No`);
-        yes.addEventListener('click', function () {
-            if (t===0){
-                instructie.innerText = (`Truth of Dare?`);
-                yes.innerText = (`Truth`);
-                no.innerText = (`Dare`);
-                t++;
-            }
-            if (t ===1){
-            }
-
-        })
-    };
 
     dobbel.addEventListener('click', function () {
         if (spelers!==0){
@@ -264,16 +222,17 @@
             if (whereWinner() !== null) {
                 document.querySelector(".scene").remove();
                 movePawn();
-            } else {
-                beurtOverslaan();
+            } else if (!beurtOverslaan()){
                 let geworpen = gooien();
                 plaatsbepaling(geworpen);
                 movePawn();
                 nextSpeler();
                 rollDice();
+            }else {
+                nextSpeler();
             }
         }else if (spelers===0){
-            error.innerHTML = (`Start eerst het spel aub!`);
+            window.alert('Start eerst het spel aub!')
         }
     });
 
@@ -282,7 +241,7 @@
             error.innerHTML = (`Gestart met ${spelerInput.value} spelers. Eerste speler: ${pion + 1}`);
             return true;
         } else {
-            error.innerHTML = (`Aantal spelers moet tussen 1 en 4 liggen.`);
+            window.alert(`Aantal spelers moet tussen 1 en 4 liggen.`);
             return false;
         }
     }
@@ -291,20 +250,10 @@
             spelers = spelerInput.value;
             for (let t = 0; t < spelers; t++) {
                 index.push(0);
+                hasOverlap.push(false);
             }
         }
     })
     window.onresize = (movePawn);
 
-    /* kleur boxes aanpassen indien dynamisch
-     const color = ()=>{
-         const boxes = document.querySelectorAll('.box');
-         for (let t =0 ; t<boxes.length ; t++){
-             if (t%2===0){
-                 boxes[t].classList.add("red");
-             }else {
-                 boxes[t].classList.add("white");
-             }
-         }
-     }*/
 })()
