@@ -1,7 +1,6 @@
 /*
 *   root
 */
-
 :root {
     --mainColor: #507C5C;
     --footerBackgroundColor: #7FB57E;
@@ -10,6 +9,7 @@
     --font: 'Syncopate', sans-serif;
     --fontBtn: 'Snippet', sans-serif;
 }
+
 
 body::before {
     content: "";
@@ -196,6 +196,7 @@ responsive etc
 @media only screen and (min-width: 950px) {
     body::before {
         background-image: url("../img/desktop_index_1000_more.svg");
+
     }
     h1 {
         margin: 17.5vh 35% 0.75em 35%;

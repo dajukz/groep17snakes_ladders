@@ -76,7 +76,6 @@ main{
     
 }
 
-
 .game-board {
     display: grid;
     grid-template-columns: repeat(10, var(--widthLength));
@@ -141,6 +140,7 @@ main{
 
 .box:nth-of-type(2n) {
     background-color: var(--colorWhite);
+    z-index: -2;
 }
 
 .box:nth-of-type(2n+1) {
