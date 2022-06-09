@@ -1,455 +1,455 @@
-  :root {
-     --widthLength: 5em;
-     --boardSize: calc(var(--widthLength)*10);
-     --colorWhite: #FFFFFF;
-     --colorGreen: #BDC730;
-     --colorDarkGreen: #3F6349;
-     --mainColor: #507C5C;
-     --footerBackgroundColor: #7FB57E;
-     --cubeColor: #86c986;
-     --footerFontColor: black;
-     --font: 'Syncopate', sans-serif;
- }
- 
- body {
-     display: flex;
-     justify-content: center;
- }
- 
- p {
-     font-family: var(--font);
- }
- 
- .game-board {
-     display: grid;
-     grid-template-columns: repeat(10, var(--widthLength));
-     grid-auto-rows: var(--widthLength);
-     grid-auto-flow: row dense;
-     counter-reset: num;
-     align-self: center;
-     height: var(--boardSize);
-     width: var(--boardSize);
-     margin-top: 1.5rem;
- }
- 
- .game-board>div:nth-child(20n+11) {
-     grid-column: 10;
- }
- 
- .game-board>div:nth-child(20n+12) {
-     grid-column: 9;
- }
- 
- .game-board>div:nth-child(20n+13) {
-     grid-column: 8;
- }
- 
- .game-board>div:nth-child(20n+14) {
-     grid-column: 7;
- }
- 
- .game-board>div:nth-child(20n+15) {
-     grid-column: 6;
- }
- 
- .game-board>div:nth-child(20n+16) {
-     grid-column: 5;
- }
- 
- .game-board>div:nth-child(20n+17) {
-     grid-column: 4;
- }
- 
- .game-board>div:nth-child(20n+18) {
-     grid-column: 3;
- }
- 
- .game-board>div:nth-child(20n+19) {
-     grid-column: 2;
- }
- 
- .game-board>div:nth-child(20n+20) {
-     grid-column: 1;
- }
- 
- .box {
-     border: 5px solid black;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .game-board>div {
-     border: 1px solid;
- }
- 
- .box:nth-of-type(2n) {
-     background-color: var(--colorWhite);
- }
- 
- .box:nth-of-type(2n+1) {
-     background-color: var(--colorGreen);
- }
- 
- .game-board>div:before {
-     content: counter(num);
-     counter-increment: num;
- }
- 
- .pawns {
-     height: calc(var(--widthLength)/2);
-     margin-top: 1.5rem;
- }
- 
- .pawnsmoved {
-     position: absolute;
-     z-index: 3;
- }
- 
- .spelbordImg {
-     position: absolute;
-     width: var(--boardSize);
-     height: var(--boardSize);
-     z-index: 0;
- }
- 
- * {
-     box-sizing: border-box;
- }
- 
- .scene {
-     width: 200px;
-     height: 200px;
-     margin: 20px;
-     perspective: 600px;
- }
- 
- .cube {
-     width: 200px;
-     height: 200px;
-     position: relative;
-     transform-style: preserve-3d;
-     transform: translateZ(-100px);
-     transition: transform 1s;
-     margin-top: 1.5rem;
- }
- 
- .cube.show-1 {
-     transform: translateZ(-100px) rotateY( 0deg);
- }
- 
- .cube.show-2 {
-     transform: translateZ(-100px) rotateY(-180deg);
- }
- 
- .cube.show-3 {
-     transform: translateZ(-100px) rotateY( -90deg);
- }
- 
- .cube.show-4 {
-     transform: translateZ(-100px) rotateY( 90deg);
- }
- 
- .cube.show-5 {
-     transform: translateZ(-100px) rotateX( -90deg);
- }
- 
- .cube.show-6 {
-     transform: translateZ(-100px) rotateX( 90deg);
- }
- 
- .cube__face {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     border: 4px solid var(--footerFontColor);
-     line-height: 200px;
-     font-size: 40px;
-     font-weight: bold;
-     color: var(--footerFontColor);
-     text-align: center;
- }
- 
- .cube__face--1 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--3 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--2 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--4 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--5 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--6 {
-     background: var(--cubeColor);
-     opacity: 0.91;
- }
- 
- .cube__face--1 {
-     transform: rotateY( 0deg) translateZ(100px);
- }
- 
- .cube__face--2 {
-     transform: rotateY(180deg) translateZ(100px);
- }
- 
- .cube__face--3 {
-     transform: rotateY( 90deg) translateZ(100px);
- }
- 
- .cube__face--4 {
-     transform: rotateY(-90deg) translateZ(100px);
- }
- 
- .cube__face--5 {
-     transform: rotateX( 90deg) translateZ(100px);
- }
- 
- .cube__face--6 {
-     transform: rotateX(-90deg) translateZ(100px);
- }
- 
- .setup {
-     margin-top: 7rem;
- }
- 
- .setup label {
-     font-family: var(--font);
- }
- 
- .setup input {
-     border: 1px solid #ccc;
-     font-size: 1em;
-     padding: 0.25em;
-     width: 90%;
-     width: calc(60% - 0.1em);
-     margin-top: 5px;
- }
- 
- span {
-     font-family: var(--font);
-     font-size: 1rem;
- }
- 
- .setup button {
-     display: block;
-     border: none;
-     border-radius: 4rem;
-     background-color: var(--mainColor);
-     color: var(--btnColor);
-     font-family: var(--fontBtn);
-     font-size: 1.2rem;
-     width: clamp(1em, 80%, 5em);
-     height: 3.5vh;
-     margin-top: 0.5rem;
-     text-align: center;
- }
- 
- .setup button:hover {
-     cursor: pointer;
- }
- 
- .scene button {
-     display: block;
-     border: none;
-     border-radius: 4rem;
-     background-color: var(--mainColor);
-     color: var(--btnColor);
-     font-family: var(--fontBtn);
-     font-size: 1.2rem;
-     width: clamp(7em, 80%, 9em);
-     height: 3.5vh;
-     margin-top: 1rem;
-     text-align: center;
- }
- 
- .scene button:hover {
-     cursor: pointer;
- }
- /*
-    *   footer
-    */
- 
- footer {
-     position: fixed;
-     bottom: 0;
-     left: 0;
-     background-color: var(--footerBackgroundColor);
-     width: 100%;
-     padding-bottom: 10px;
- }
- 
- h2 {
-     font-family: var(--font);
-     font-weight: normal;
-     color: var(--footerFontColor);
-     text-align: center;
- }
- 
- footer ul {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: center;
-     text-align: center;
-     list-style-type: none;
-     font-family: var(--font);
- }
- 
- footer li a {
-     text-decoration: none;
-     color: var(--footerFontColor);
-     padding: 10px;
- }
- 
- @media only screen and (min-width: 500px) {
-      :root {
-         --widthLength: 3.1em;
-         --boardSize: calc(var(--widthLength)*10);
-     }
-     .scene {
-         margin-bottom: 30rem;
-         margin-top: 1rem;
-         transform: translate(-65%, -5%);
-     }
-     .game-board {
-         margin-top: 30rem;
-         transform: translate(21.5%, -30%);
-     }
-     .pawns {
-         margin-top: 2.5rem;
-         transform: translate(1300%, -30%)
-     }
-     .setup {
-         margin-top: 2rem;
-         transform: translate(-20%, -50%);
-         margin: 120px 0px 1px;
-         position: absolute;
-     }
- }
- 
- @media only screen and (min-width: 620px) {
-      :root {
-         --widthLength: 3.8em;
-         --boardSize: calc(var(--widthLength)*10);
-     }
-     body {
-         max-width: 40%;
-         height: 100%;
-     }
-     .scene {
-         margin-bottom: 30rem;
-         margin-top: 1rem;
-         transform: translate(20%, -5%);
-     }
-     .game-board {
-         margin-top: 20rem;
-         transform: translate(47.5%, -5%);
-     }
-     .pawns {
-         margin-top: 2rem;
-         transform: translate(1870%, -1%)
-     }
-     .setup {
-         margin-top: 2rem;
-         transform: translate(25%, -40%);
-         margin: 120px 0px 5px;
-         position: absolute;
-     }
- }
- 
- @media only screen and (min-width:700px) {
-     body {
-         height: 100%;
-     }
-      :root {
-         --widthLength: 4em;
-         --boardSize: calc(var(--widthLength)*10);
-     }
-     .game-board {
-         margin-top: 20.5rem;
-         transform: translate(48.5%, -10%);
-     }
-     .setup {
-         transform: translate(22%, -30%);
-     }
-     .pawns {
-         margin-top: 1.5rem;
-     }
-     .scene {
-         margin-top: 0;
-     }
-     .scene button {
-         margin-top: 10px;
-     }
- }
- 
- @media only screen and (min-width: 950px) {
-     body {
-         height: 100%;
-     }
-      :root {
-         --widthLength: 5.7em;
-     }
-     .pawns {
-         margin-top: 1rem;
-     }
-     .game-board {
-         margin-top: 17.5rem;
-         transform: translate(41.5%, -1%);
-         height: 65rem;
-     }
-     .setup {
-         transform: translate(20%, -30%);
-     }
- }
- 
- @media only screen and (min-width: 1000px) {
-     body {
-         height: 100%;
-     }
       :root {
          --widthLength: 5em;
          --boardSize: calc(var(--widthLength)*10);
+         --colorWhite: #FFFFFF;
+         --colorGreen: #BDC730;
+         --colorDarkGreen: #3F6349;
+         --mainColor: #507C5C;
+         --footerBackgroundColor: #7FB57E;
+         --cubeColor: #86c986;
+         --footerFontColor: black;
+         --font: 'Syncopate', sans-serif;
      }
+     
+     body {
+         display: flex;
+         justify-content: center;
+     }
+     
+     p {
+         font-family: var(--font);
+     }
+     
      .game-board {
-         margin-top: 3rem;
-         transform: translate(15%, 1%);
-         height: 65rem;
+         display: grid;
+         grid-template-columns: repeat(10, var(--widthLength));
+         grid-auto-rows: var(--widthLength);
+         grid-auto-flow: row dense;
+         counter-reset: num;
+         align-self: center;
+         height: var(--boardSize);
+         width: var(--boardSize);
+         margin-top: 1.5rem;
      }
+     
+     .game-board>div:nth-child(20n+11) {
+         grid-column: 10;
+     }
+     
+     .game-board>div:nth-child(20n+12) {
+         grid-column: 9;
+     }
+     
+     .game-board>div:nth-child(20n+13) {
+         grid-column: 8;
+     }
+     
+     .game-board>div:nth-child(20n+14) {
+         grid-column: 7;
+     }
+     
+     .game-board>div:nth-child(20n+15) {
+         grid-column: 6;
+     }
+     
+     .game-board>div:nth-child(20n+16) {
+         grid-column: 5;
+     }
+     
+     .game-board>div:nth-child(20n+17) {
+         grid-column: 4;
+     }
+     
+     .game-board>div:nth-child(20n+18) {
+         grid-column: 3;
+     }
+     
+     .game-board>div:nth-child(20n+19) {
+         grid-column: 2;
+     }
+     
+     .game-board>div:nth-child(20n+20) {
+         grid-column: 1;
+     }
+     
+     .box {
+         border: 5px solid black;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+     
+     .game-board>div {
+         border: 1px solid;
+     }
+     
+     .box:nth-of-type(2n) {
+         background-color: var(--colorWhite);
+     }
+     
+     .box:nth-of-type(2n+1) {
+         background-color: var(--colorGreen);
+     }
+     
+     .game-board>div:before {
+         content: counter(num);
+         counter-increment: num;
+     }
+     
      .pawns {
-         margin-right: 60rem;
-         margin-top: 3rem;
-         transform: translate(2370%, 10%)
+         height: calc(var(--widthLength)/2);
+         margin-top: 1.5rem;
      }
-     .setup {
-         transform: translate(-30%, -30%);
+     
+     .pawnsmoved {
+         position: absolute;
+         z-index: 3;
      }
+     
+     .spelbordImg {
+         position: absolute;
+         width: var(--boardSize);
+         height: var(--boardSize);
+         z-index: 0;
+     }
+     
+     * {
+         box-sizing: border-box;
+     }
+     
      .scene {
-         margin-top: 3rem;
-         transform: translate(70%, -1%);
+         width: 200px;
+         height: 200px;
+         margin: 20px;
+         perspective: 600px;
      }
+     
+     .cube {
+         width: 200px;
+         height: 200px;
+         position: relative;
+         transform-style: preserve-3d;
+         transform: translateZ(-100px);
+         transition: transform 1s;
+         margin-top: 1.5rem;
+     }
+     
+     .cube.show-1 {
+         transform: translateZ(-100px) rotateY( 0deg);
+     }
+     
+     .cube.show-2 {
+         transform: translateZ(-100px) rotateY(-180deg);
+     }
+     
+     .cube.show-3 {
+         transform: translateZ(-100px) rotateY( -90deg);
+     }
+     
+     .cube.show-4 {
+         transform: translateZ(-100px) rotateY( 90deg);
+     }
+     
+     .cube.show-5 {
+         transform: translateZ(-100px) rotateX( -90deg);
+     }
+     
+     .cube.show-6 {
+         transform: translateZ(-100px) rotateX( 90deg);
+     }
+     
+     .cube__face {
+         position: absolute;
+         width: 200px;
+         height: 200px;
+         border: 4px solid var(--footerFontColor);
+         line-height: 200px;
+         font-size: 40px;
+         font-weight: bold;
+         color: var(--footerFontColor);
+         text-align: center;
+     }
+     
+     .cube__face--1 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--3 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--2 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--4 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--5 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--6 {
+         background: var(--cubeColor);
+         opacity: 0.91;
+     }
+     
+     .cube__face--1 {
+         transform: rotateY( 0deg) translateZ(100px);
+     }
+     
+     .cube__face--2 {
+         transform: rotateY(180deg) translateZ(100px);
+     }
+     
+     .cube__face--3 {
+         transform: rotateY( 90deg) translateZ(100px);
+     }
+     
+     .cube__face--4 {
+         transform: rotateY(-90deg) translateZ(100px);
+     }
+     
+     .cube__face--5 {
+         transform: rotateX( 90deg) translateZ(100px);
+     }
+     
+     .cube__face--6 {
+         transform: rotateX(-90deg) translateZ(100px);
+     }
+     
+     .setup {
+         margin-top: 7rem;
+     }
+     
+     .setup label {
+         font-family: var(--font);
+     }
+     
      .setup input {
          border: 1px solid #ccc;
          font-size: 1em;
-         padding: 1em;
-         width: 100%;
-         width: calc(80% - -1em);
-         margin-top: 10px;
+         padding: 0.25em;
+         width: 90%;
+         width: calc(60% - 0.1em);
+         margin-top: 5px;
      }
- }
+     
+     span {
+         font-family: var(--font);
+         font-size: 1rem;
+     }
+     
+     .setup button {
+         display: block;
+         border: none;
+         border-radius: 4rem;
+         background-color: var(--mainColor);
+         color: var(--btnColor);
+         font-family: var(--fontBtn);
+         font-size: 1.2rem;
+         width: clamp(1em, 80%, 5em);
+         height: 3.5vh;
+         margin-top: 0.5rem;
+         text-align: center;
+     }
+     
+     .setup button:hover {
+         cursor: pointer;
+     }
+     
+     .scene button {
+         display: block;
+         border: none;
+         border-radius: 4rem;
+         background-color: var(--mainColor);
+         color: var(--btnColor);
+         font-family: var(--fontBtn);
+         font-size: 1.2rem;
+         width: clamp(7em, 80%, 9em);
+         height: 3.5vh;
+         margin-top: 1rem;
+         text-align: center;
+     }
+     
+     .scene button:hover {
+         cursor: pointer;
+     }
+     /*
+    *   footer
+    */
+     
+     footer {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         background-color: var(--footerBackgroundColor);
+         width: 100%;
+         padding-bottom: 10px;
+     }
+     
+     h2 {
+         font-family: var(--font);
+         font-weight: normal;
+         color: var(--footerFontColor);
+         text-align: center;
+     }
+     
+     footer ul {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         list-style-type: none;
+         font-family: var(--font);
+     }
+     
+     footer li a {
+         text-decoration: none;
+         color: var(--footerFontColor);
+         padding: 10px;
+     }
+     
+     @media only screen and (min-width: 500px) {
+          :root {
+             --widthLength: 3.1em;
+             --boardSize: calc(var(--widthLength)*10);
+         }
+         .scene {
+             margin-bottom: 30rem;
+             margin-top: 1rem;
+             transform: translate(-65%, -5%);
+         }
+         .game-board {
+             margin-top: 30rem;
+             transform: translate(21.5%, -30%);
+         }
+         .pawns {
+             margin-top: 2.5rem;
+             transform: translate(1300%, -30%)
+         }
+         .setup {
+             margin-top: 2rem;
+             transform: translate(-20%, -50%);
+             margin: 120px 0px 1px;
+             position: absolute;
+         }
+     }
+     
+     @media only screen and (min-width: 620px) {
+          :root {
+             --widthLength: 3.8em;
+             --boardSize: calc(var(--widthLength)*10);
+         }
+         body {
+             max-width: 40%;
+             height: 100%;
+         }
+         .scene {
+             margin-bottom: 30rem;
+             margin-top: 1rem;
+             transform: translate(20%, -5%);
+         }
+         .game-board {
+             margin-top: 20rem;
+             transform: translate(47.5%, -5%);
+         }
+         .pawns {
+             margin-top: 2rem;
+             transform: translate(1870%, -1%)
+         }
+         .setup {
+             margin-top: 2rem;
+             transform: translate(25%, -40%);
+             margin: 120px 0px 5px;
+             position: absolute;
+         }
+     }
+     
+     @media only screen and (min-width:700px) {
+         body {
+             height: 100%;
+         }
+          :root {
+             --widthLength: 4em;
+             --boardSize: calc(var(--widthLength)*10);
+         }
+         .game-board {
+             margin-top: 20.5rem;
+             transform: translate(48.5%, -10%);
+         }
+         .setup {
+             transform: translate(22%, -30%);
+         }
+         .pawns {
+             margin-top: 1.5rem;
+         }
+         .scene {
+             margin-top: 0;
+         }
+         .scene button {
+             margin-top: 10px;
+         }
+     }
+     
+     @media only screen and (min-width: 950px) {
+         body {
+             height: 100%;
+         }
+          :root {
+             --widthLength: 5.7em;
+         }
+         .pawns {
+             margin-top: 1rem;
+         }
+         .game-board {
+             margin-top: 17.5rem;
+             transform: translate(41.5%, -1%);
+             height: 65rem;
+         }
+         .setup {
+             transform: translate(20%, -30%);
+         }
+     }
+     
+     @media only screen and (min-width: 1000px) {
+         body {
+             height: 100%;
+         }
+          :root {
+             --widthLength: 5em;
+             --boardSize: calc(var(--widthLength)*10);
+         }
+         .game-board {
+             margin-top: 1rem;
+             transform: translate(15%, 1%);
+             height: 65rem;
+         }
+         .pawns {
+             margin-right: 60rem;
+             margin-top: 3rem;
+             transform: translate(2370%, 10%)
+         }
+         .setup {
+             transform: translate(-30%, -30%);
+         }
+         .scene {
+             margin-top: 3rem;
+             transform: translate(70%, -1%);
+         }
+         .setup input {
+             border: 1px solid #ccc;
+             font-size: 1em;
+             padding: 1em;
+             width: 100%;
+             width: calc(80% - -1em);
+             margin-top: 10px;
+         }
+     }
