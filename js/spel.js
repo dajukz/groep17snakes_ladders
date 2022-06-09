@@ -77,6 +77,7 @@
                 let box = boxes[index[i] - 1].getBoundingClientRect();
                 let cpawn = currentpawn.getBoundingClientRect();
                 const body = document.body.getBoundingClientRect();
+                //bron getBoundingClientRect: https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
                 let offsettop = box.top - (body.top);
                 let offsetBottom = box.bottom - (body.top);
                 let offsetleft = box.left - (body.left);
@@ -204,6 +205,7 @@
     }
 
     const rollDice = () => {
+        //bron: vorig project Siemen
         let randNum = dobbelsteen.geefLaatsteWorp();
         let showClass = 'show-' + randNum;
         if (currentClass) {
